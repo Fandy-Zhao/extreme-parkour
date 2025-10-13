@@ -13,7 +13,7 @@
 conda create -n parkour python=3.8
 conda activate parkour
 cd
-pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116  
 git clone git@github.com:chengxuxin/extreme-parkour.git
 cd extreme-parkour
 # Download the Isaac Gym binaries from https://developer.nvidia.com/isaac-gym 
@@ -28,7 +28,7 @@ pip install "numpy<1.24" pydelatin wandb tqdm opencv-python ipdb pyfqmr flask
 `cd legged_gym/scripts`
 1. Train base policy:  
 ```bash
-python train.py --exptid xxx-xx-WHATEVER --device cuda:0
+python train.py --exptid 000-00-WHATEVER --device cuda:0
 ```
 Train 10-15k iterations (8-10 hours on 3090) (at least 15k recommended).
 
