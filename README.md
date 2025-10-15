@@ -13,7 +13,7 @@
 conda create -n parkour python=3.8
 conda activate parkour
 cd
-pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116  
 git clone git@github.com:chengxuxin/extreme-parkour.git
 cd extreme-parkour
 # Download the Isaac Gym binaries from https://developer.nvidia.com/isaac-gym 
@@ -28,13 +28,13 @@ pip install "numpy<1.24" pydelatin wandb tqdm opencv-python ipdb pyfqmr flask
 `cd legged_gym/scripts`
 1. Train base policy:  
 ```bash
-python train.py --exptid xxx-xx-WHATEVER --device cuda:0
+python train.py --exptid 000-xx-WHATEVER --device cuda:0
 ```
 Train 10-15k iterations (8-10 hours on 3090) (at least 15k recommended).
 
 2. Train distillation policy:
 ```bash
-python train.py --exptid yyy-yy-WHATEVER --device cuda:0 --resume --resumeid xxx-xx --delay --use_camera
+python train.py --exptid 111-yy-WHATEVER --device cuda:0 --resume --resumeid 000-xx --delay --use_camera
 ```
 Train 5-10k iterations (5-10 hours on 3090) (at least 5k recommended). 
 >You can run either base or distillation policy at arbitary gpu # as long as you set `--device cuda:#`, no need to set `CUDA_VISIBLE_DEVICES`.
