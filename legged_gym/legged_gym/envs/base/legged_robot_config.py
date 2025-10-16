@@ -38,7 +38,7 @@ class LeggedRobotCfg(BaseConfig):
         load_student_config = False
         mask_priv_obs = False
     class env:
-        num_envs = 3000
+        num_envs = 100
 
         n_scan = 132
         n_priv = 3+3 +3
@@ -88,7 +88,7 @@ class LeggedRobotCfg(BaseConfig):
 
     class depth:
         use_camera = False
-        camera_num_envs = 192
+        camera_num_envs = 96
         camera_terrain_num_rows = 10
         camera_terrain_num_cols = 20
 
@@ -353,10 +353,15 @@ class LeggedRobotCfgPPO(BaseConfig):
     class policy:
         init_noise_std = 1.0
         continue_from_last_std = True
+        # 原始版本
         scan_encoder_dims = [128, 64, 32]
         actor_hidden_dims = [512, 256, 128]
         critic_hidden_dims = [512, 256, 128]
         priv_encoder_dims = [64, 20]
+        # scan_encoder_dims = [ 64, 32, 16]
+        # actor_hidden_dims = [256, 128, 64]
+        # critic_hidden_dims = [256, 128, 64]
+        # priv_encoder_dims = [64, 20]
         activation = 'elu' # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
         # only for 'ActorCriticRecurrent':
         rnn_type = 'lstm'
